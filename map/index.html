@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,14 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>www.makeApie.cn - ECharts案例下载 - 会员分布图</title>
-    <!--
-        🚨🚨非常重要🚨🚨：设置相对路径资源url链接
-        如果你需要本地使用，请下载下来，假设下面代码中有个相对路径资源 /dep/echarts/map/js/china.js，👉👉下载方法：https://www.makeapie.cn/dep/echarts/map/js/china.js
-    -->
-    <!-- <base href="https://www.makeapie.cn/" /> -->
-
-    <!-- 引入刚刚下载的 ECharts 文件 和 jquery -->
+    <title>固本然全国产业布局图</title>
     <script
       type="text/javascript"
       src="https://registry.npmmirror.com/jquery/3.7.1/files/dist/jquery.min.js"
@@ -32,21 +24,30 @@
         padding: 0;
         margin: 0;
       }
+
+      #chart-panel {
+        width: calc(100vw - 200px);
+        height: calc(100vh - 200px);
+        padding: 100px;
+        margin: 0 auto;
+      }
+
+      @media screen and (max-width: 600px) {
+        #chart-panel {
+          padding: 0;
+          padding-top: 40px;
+          width: 100vw;
+          height: 100vw;
+          box-sizing: border-box;
+        }
+      }
     </style>
 
     <script type="text/javascript" src="./china.js"></script>
   </head>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-    <div
-      id="chart-panel"
-      style="
-        width: calc(100vw - 200px);
-        height: calc(100vh - 200px);
-        padding: 100px;
-        margin: 0 auto;
-      "
-    ></div>
+    <div id="chart-panel"></div>
 
     <ul id="images" style="display: none">
       <li><img src="./images/tibet-1.jpg" alt="Picture 1" /></li>
@@ -87,7 +88,7 @@
         新疆: [85.617733, 40.792818],
         山西: [111.849248, 36.857014],
         宁夏: [106.278179, 37.26637],
-        吉林: [125.3245, 43.886841],
+        吉林: [125.3245, 41.886841],
         内蒙古: [111.670801, 41.818311],
       };
 
@@ -115,37 +116,32 @@
           // showDelay: 0,
           // transitionDuration: 0.2,
         },
-        visualMap: {
-          left: "right",
-          min: 1,
-          max: 15,
-          inRange: {
-            color: [
-            //   "#313695",
-            //   "#4575b4",
-            //   "#74add1",
-              "#abd9e9",
-              "#e0f3f8",
-              "#ffffbf",
-              "#fee090",
-              "#fdae61",
-              "#f46d43",
-            //   "#d73027",
-            //   "#a50026",
-            ],
-          },
-          text: ["High", "Low"],
-          calculable: true,
-          realtime: false,
-        },
+        // visualMap: {
+        //   left: "right",
+        //   min: 1,
+        //   max: 15,
+        //   inRange: {
+        //     color: [
+        //       "#abd9e9",
+        //       "#e0f3f8",
+        //       "#ffffbf",
+        //       "#fee090",
+        //       "#fdae61",
+        //       "#f46d43",
+        //     ],
+        //   },
+        //   text: ["High", "Low"],
+        //   calculable: true,
+        //   realtime: false,
+        // },
         geo: {
           name: "图片数量",
           map: "china",
           roam: false,
-          // scaleLimit:{
-          //   max:'1.2',
-          //   min:'0.7'
-          // },
+          selectedMode: "single",
+          // layoutCenter: ['100%', '100%'],
+// 如果宽高比大于 1 则宽度为 100，如果小于 1 则高度为 100，保证了不超过 100x100 的区域
+// layoutSize: 450,
           label: {
             normal: {
               show: true,
@@ -157,18 +153,19 @@
           itemStyle: {
             normal: {
               borderColor: "rgba(0, 0, 0, 0.2)",
+              areaColor: "#eee",
             },
             emphasis: {
-              areaColor: null,
-              shadowOffsetX: 0,
-              shadowOffsetY: 0,
-              shadowBlur: 20,
-              borderWidth: 0,
-              shadowColor: "rgba(0, 0, 0, 0.5)",
+              borderColor: "rgba(0, 255, 0, 1)",
+              areaColor: "rgba(0, 255, 0, 1)",
+              // shadowOffsetX: 0,
+              // shadowOffsetY: 0,
+              // shadowBlur: 20,
+              // borderWidth: 0,
+              // shadowColor: "rgba(0, 0, 0, 0.5)",
             },
           },
         },
-        // backgroundColor: 'rgba(0,51,102, 1)',
         series: [
           {
             type: "scatter",
@@ -176,37 +173,23 @@
             data: convertData(data),
             symbolSize: 20,
             symbol: `image://./flag.png`,
-
-            // symbol:
-            //   "path://M35.025,17.608c-5.209-4.786-11.483-2.301-15.303-4.281v-1.482c0-0.41-0.333-0.743-0.743-0.743c-0.411,0-0.743,0.333-0.743,0.743v24.682c-1.855,0.104-3.261,0.59-3.261,1.175c0,0.661,1.793,1.197,4.005,1.197c2.21,0,4.003-0.536,4.003-1.197c0-0.585-1.405-1.071-3.261-1.175V26.151C24.575,24.573,28.408,17.166,35.025,17.608z",
             symbolRotate: 0,
             symbolOffset: ["50%", "-100%"],
-            label: {
-              normal: {
-                formatter: "{b}",
-                position: "top",
-                show: false,
-                textStyle: {
-                  color: "#000000",
-                  fontSize: 16,
-                },
-              },
-              emphasis: {
-                show: false,
-              },
+            tooltip: {
+              show: false,
+              trigger: "none",
             },
-            itemStyle: {
-              normal: {
-                color: "#F06C00",
-              },
+            label: {
+              show: false,
             },
           },
           {
-            name: "个人会员数量",
+            name: "图片数量",
             type: "map",
+            scaleSize: 1.2,
             geoIndex: 0,
             tooltip: {
-              show: true,
+              show: false,
             },
             data: data,
           },
@@ -222,11 +205,13 @@
       // 监听地图点击事件
       myChart.on("click", function (params) {
         if (params.componentType === "series" && params.seriesType === "map") {
-          // alert("你点击了：" + params.name);
           console.log("你点击了：" + params.name + "图片数量:" + params.value);
           if (params.value > 0) {
-            // 你可以在这里添加更多逻辑，比如导航到详情页}
             previewImg();
+          }else {
+            setTimeout(function () {
+              alert(params.name + '没有相关信息');
+            },500)
           }
         }
       });
