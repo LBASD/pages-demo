@@ -1,12 +1,4 @@
-<!--
-    🚨🚨温馨提示🚨🚨
-    下面代码是程序自动生成，可能存在个别无法运行，如果无法运行，请调整下echarts版本，或者自行浏览器查看报错信息进行修复；
-    下面代码分为 echarts框架代码这个代码主要用于能运行起来echarts，还有就是核心代码（用🚨🚨非常重要🚨🚨进行标注了），核心代码主要用于显示案例效果
-    如果有问题请打开社区网站 https://www.makeapie.cn 添加右上角微信群/qq群进行询问
-     
-    🚨🚨Tips🚨🚨：
-    不要项目中使用社区链接资源，如https://www.makeapie.cn/dep/echarts/map/js/china.js，请务必下载本地后使用，因为社区地址会不定期更换，可能会导致你们项目出现问题。
--->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,18 +24,9 @@
       type="text/javascript"
       src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"
     ></script>
-    <!-- <script
-      src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js"
-      crossorigin="anonymous"
-    ></script> -->
-    <script src="../js/viewer.js"></script>
+    <script src="./js/viewer.js"></script>
 
-    <!-- <link
-      rel="stylesheet"
-      href="https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css"
-      crossorigin="anonymous"
-    /> -->
-    <link rel="stylesheet" href="../css/viewer.css" />
+    <link rel="stylesheet" href="./css/viewer.css" />
     <style>
       * {
         padding: 0;
@@ -51,12 +34,7 @@
       }
     </style>
 
-    <!--
-        🚨🚨非常重要🚨🚨：下面是运行案例需要的第三方脚本，如果是相对链接，下载方法看上面👆👆
-        如果你需要本地使用，请下载下来，假设下面代码中有个相对路径资源 /dep/echarts/map/js/china.js，下载方法：https://www.makeapie.cn/dep/echarts/map/js/china.js
-    -->
-    <!--暂无第三方脚本-->
-    <script type="text/javascript" src="/china.js"></script>
+    <script type="text/javascript" src="./china.js"></script>
   </head>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
@@ -71,10 +49,10 @@
     ></div>
 
     <ul id="images" style="display: none">
-      <li><img src="../images/tibet-1.jpg" alt="Picture 1" /></li>
-      <li><img src="../images/1.jpg" alt="Picture 1" /></li>
-      <li><img src="../images/1.png" alt="Picture 1" /></li>
-      <li><img src="../images/2.jpg" alt="Picture 1" /></li>
+      <li><img src="./images/tibet-1.jpg" alt="Picture 1" /></li>
+      <li><img src="./images/1.jpg" alt="Picture 1" /></li>
+      <li><img src="./images/1.png" alt="Picture 1" /></li>
+      <li><img src="./images/2.jpg" alt="Picture 1" /></li>
     </ul>
     <script type="text/javascript">
       // 基于准备好的dom，初始化echarts实例
